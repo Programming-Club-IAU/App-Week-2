@@ -10,3 +10,12 @@ void main() {
   print('IsStudent: $isStudent');
   print('Hobbies: $hobbies');
 }
+
+void main2() {
+  try {
+    int result = 10 ~/ 0; //triggering error
+    print("Result: $result");
+  } catch (e) {
+    print('An error ocurred: $e');
+  }
+}
