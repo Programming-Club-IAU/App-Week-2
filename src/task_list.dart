@@ -12,11 +12,17 @@ void add(){
  
   new_task.ID = All_tasks.length;
 
-  stdout.write('task title: ');
-  new_task.Title = stdin.readLineSync()!;
+  do {
+      stdout.write('task title: ');
+      new_task.Title = stdin.readLineSync()!;
 
-  stdout.write('task description: ');
-  new_task.Description = stdin.readLineSync()!;
+  } while( new_task.Title == '');
+  
+  do {
+      stdout.write('task description: ');
+      new_task.Description = stdin.readLineSync()!;
+
+  } while( new_task.Description == '');
 
   All_tasks.add(new_task);
 
@@ -27,54 +33,75 @@ void add(){
 
 void remove(){
 
-  
-  stdout.write('Please enter the ID of the task you want to remove: ');
-  int task_id = int.parse(stdin.readLineSync()!);
+  try 
+  {
+    stdout.write('Please enter the ID of the task you want to remove: ');
+    int task_id = int.parse(stdin.readLineSync()!);
 
-  All_tasks.remove(All_tasks[task_id]);
+    All_tasks.remove(All_tasks[task_id]);
 
-  print('The task has been removed successfully!');
+    print('The task has been removed successfully!');
 
-  main();
- 
+    main();
+  } 
+  catch(e)
+  {
+    print('Please enter valid ID');
+    remove();
+  }
+
 }
 
 void update(){
 
+  try
+  {
+    stdout.write('Please enter the ID of the task you want to update: ');
+    int task_id = int.parse(stdin.readLineSync()!);
+
+    Task the_task = All_tasks[task_id];
+    
+    stdout.write('What do you want to update (title, description, completed)?');
+    String? field = stdin.readLineSync()!;
+    
+    field.toLowerCase();
   
-  stdout.write('Please enter the ID of the task you want to update: ');
-  int task_id = int.parse(stdin.readLineSync()!);
+    if (field == 'title')
+    {
 
-  Task the_task = All_tasks[task_id];
+      do {
+        stdout.write('Enter new title please: ');
+        the_task.Title = stdin.readLineSync()!;
 
-  stdout.write('What do you want to update (title, description, completed)?');
-  String? field = stdin.readLineSync()!;
+      } while (the_task.Title == '');
+      
+    }
+    else if (field == 'description')
+    {
+      do {
+        stdout.write('Enter new description please: ');
+        the_task.Description = stdin.readLineSync()!;
+      } while (the_task.Description == '');
 
-  field.toLowerCase();
-  
-  if (field == 'title')
-  {
-    stdout.write('Enter new title please: ');
-    the_task.Title = stdin.readLineSync()!;
+    }
+    else if (field == 'completed') 
+    {
+      the_task.isCompleted = !(the_task.isCompleted);
+    }
+    else
+    {
+      print('Please select a valid field');
+    }
+    
+      print('The task has been updated successfully!');
+        main();
 
   }
-  else if (field == 'description')
+  catch(e)
   {
-    stdout.write('Enter new description please: ');
-    the_task.Description = stdin.readLineSync()!;
+    print('Please enter valid ID');
+    update();
   }
-  else if (field == 'competed') 
-  {
-    the_task.isCompleted = !(the_task.isCompleted);
-  }
-  else
-  {
-     print('Please select a valid field');
-  }
-  
-    print('The task has been updated successfully!');
-      main();
-
 
 }
 
