@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'task.dart';
 
-List<Task> All_tasks = [];
+List<Task> all_tasks = [];
 
 void add() {
   late Task new_task = Task.create();
 
-  new_task.ID = All_tasks.length;
+  new_task.ID = all_tasks.length;
 
   do {
     stdout.write('task title: ');
@@ -18,7 +18,7 @@ void add() {
     new_task.Description = stdin.readLineSync()!;
   } while (new_task.Description == '');
 
-  All_tasks.add(new_task);
+  all_tasks.add(new_task);
 
   print('The task has been added successfully!');
   main();
@@ -29,7 +29,7 @@ void remove() {
     stdout.write('Please enter the ID of the task you want to remove: ');
     int task_id = int.parse(stdin.readLineSync()!);
 
-    All_tasks.remove(All_tasks[task_id]);
+    all_tasks.remove(all_tasks[task_id]);
 
     print('The task has been removed successfully!');
 
@@ -45,7 +45,7 @@ void update() {
     stdout.write('Please enter the ID of the task you want to update: ');
     int task_id = int.parse(stdin.readLineSync()!);
 
-    Task the_task = All_tasks[task_id];
+    Task the_task = all_tasks[task_id];
 
     stdout.write('What do you want to update (title, description, completed)?');
     String? field = stdin.readLineSync()!;
@@ -101,8 +101,8 @@ void view() {
     List<String> sub_headings = ['ID', 'Title', 'Description', 'Completed'];
     tasks.add(sub_headings);
 
-    for (var i = 0; i < All_tasks.length; i++) {
-      Task task = All_tasks[i];
+    for (var i = 0; i < all_tasks.length; i++) {
+      Task task = all_tasks[i];
       List<String> single_task = [
         task.ID.toString(),
         task.Title.toString(),

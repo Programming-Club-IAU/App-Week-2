@@ -3,18 +3,17 @@
 
 class Task {
     
-    late int ID;
-    late String Title;
-    late String Description;
-    late bool isCompleted;
+    int ID;
+    String Title;
+    String Description;
+    bool isCompleted;
 
-    Task(this.ID, this.Title, this.Description, this.isCompleted);
+    Task({required this.ID, required this.Title, required this.Description, required this.isCompleted});
 
-    Task.create() {
-        ID = 0;
-        Title = '';
-        Description = '';
-        isCompleted = false;
+    factory Task.create() {
+
+      return Task(ID: 0, Title: '', Description: '', isCompleted: false);
+       
     }
 }
 
