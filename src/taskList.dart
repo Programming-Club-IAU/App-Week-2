@@ -1,96 +1,37 @@
-//import 'tasks.dart';
-//import 'main.dart';
-import 'dart:io';
+import 'task.dart';
+import 'main.dart';
 
-void main(List<String> args) {
-  Task _tasks = Task(id: 0, Title: "", Description: "", isCompleted: false);
-  _tasks.addTask('Title', 'Description');
-}
-
-class Task {
-  int id;
-  String Title;
-
-  String get title {
-    return Title;
-  }
-
-  set title(String title) {
-    Title = title;
-  }
-
-  String Description;
-  String get description {
-    return description;
-  }
-
-  set description(String description) {
-    Description = description;
-  }
-
-  bool isCompleted;
-  Task(
-      {required this.id,
-      required this.Title,
-      required this.Description,
-      required this.isCompleted});
-
+class TaskList {
   List<Task> _tasks = [];
-  List<Task> get tasks => _tasks;
-  bool addTask(String Title, String Description) {
-    if (Title.isEmpty) {
-      return false;
-    }
-    if (Description.isEmpty) ;
-    return false;
+  TaskList(this._tasks);
+  Task operator [](int taskID) {
+    return _tasks[taskID];
   }
 
-  void AddTask(Task task) {
-    _tasks.add(task);
-    void addTitle() {
-      //add title
-      do {
-        stdout.write("Task Title:");
-        String? title = stdin.readLineSync();
-      } while (task.Title == " ");
-      addTitle();
-    }
+  int get length {
+    return _tasks.length;
+  }
+  //List<Task> get tasks => _tasks;
 
-    //add description
-    void addDescription() {
-      do {
-        stdout.write("Task Description:");
-        String? Description = stdin.readLineSync();
-      } while (task.Description == " ");
-      addDescription();
-    }
+  void addTask(String title, String description) {
+    _tasks.add(Task(id: _tasks.length, title: title, description: description));
+  }
 
-//remove task
-    void remove() {
-      try {
-        stdout.write("If you want to remove a task enter its number:");
-        int TaskId = int.parse(stdin.readLineSync()!);
-        //_tasks.remove(_tasks[TaskId]);
-        _tasks.remove((task) => task.id == TaskId);
-        print("Successfuly removed");
-      } catch (e) {
-        print("Invalid ID");
-        remove();
-      }
+  @override
+  String toString() {
+    String show = "";
+    for (var task in _tasks) {
+      show += "`````````````````````````````\n";
+      show += "Task ID:${task.id}\n";
+      show += "Task Title:${task.title}\n";
+      show += "Task Description:${task.description}\n";
+      show += "Task Status:${task.isCompleted ? "Done" : "Not Done"}\n";
+      show += "`````````````````````````````\n";
     }
+    return show;
+  }
 
-    /*void displayList() {
-      for (int i = 0; i < _tasks.length; i++) {
-        Task task = _tasks[i];
-        _tasks.add(task);
-        print(_tasks);
-        displayList();
-      }
-    }*/
-
-    @override
-    String toString() {
-      return "Task number: $id\n Task Title: $Title\n Task description: $Description\n Task status: $isCompleted";
-    }
+  void removeWhere(bool Function(Task) param0) {
+    // tasks.removeWhere((task) => task.id == taskId);
   }
 }
