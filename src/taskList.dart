@@ -1,5 +1,5 @@
 import 'task.dart';
-import 'main.dart';
+import 'dart:io';
 
 class TaskList {
   List<Task> _tasks = [];
@@ -31,7 +31,15 @@ class TaskList {
     return show;
   }
 
-  void removeWhere(bool Function(Task) param0) {
-    // tasks.removeWhere((task) => task.id == taskId);
+  void remove() {
+    try {
+      stdout.write("If you want to remove a task enter its number:");
+      int taskId = int.parse(stdin.readLineSync()!);
+      _tasks.removeWhere((tasks) => tasks.id == taskId);
+      print("Successfuly removed");
+    } catch (e) {
+      print("Invalid ID");
+      return;
+    }
   }
 }

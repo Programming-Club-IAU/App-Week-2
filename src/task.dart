@@ -4,6 +4,14 @@ class Task {
   String description;
   bool isCompleted;
 
+  void set Id(int id) {
+    this.id = id;
+  }
+
+  int get Id {
+    return id;
+  }
+
   void set Title(String title) {
     this.title = title;
   }
@@ -12,16 +20,16 @@ class Task {
     return title;
   }
 
-  void set _description(String Description) {
-    this.description = Description;
+  void set Description(String description) {
+    this.description = description;
   }
 
-  String get _description {
+  String get Description {
     return description;
   }
 
   Task(
-      {this.id = 0,
+      {this.id = 1,
       required this.title,
       required this.description,
       this.isCompleted = false});

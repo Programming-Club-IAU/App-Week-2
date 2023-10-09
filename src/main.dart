@@ -5,6 +5,7 @@ import 'taskList.dart';
 //you can make it global so you can access it from anywhere
 List<Task> _tasks = [];
 TaskList tasks = TaskList([]);
+
 void main(List<String> arg) {
 //Listing Choices
   void showTasks() {
@@ -44,7 +45,8 @@ void main(List<String> arg) {
         choose();
         break;
       case 4:
-        remove();
+        tasks.remove();
+        break;
       default:
         print("Invalid Choice");
         break;
@@ -56,9 +58,6 @@ void main(List<String> arg) {
 
 void choose() {
   int choice = 0;
-  /* while (choice <= 1) {
-    bool validChoice = false;
-    while (!validChoice) {*/
   try {
     stdout.write("To Change Title:1 / To Change Description:2 \n Your Choice?");
     choice = int.parse(stdin.readLineSync()!);
@@ -105,10 +104,10 @@ void printTasks() {
 void updateTitle(_tasks) {
   stdout.write("What Task To Update?");
   int taskID = int.parse(stdin.readLineSync()!);
-  if (taskID <= _tasks.length && taskID > 0) {
+  if (taskID <= tasks.length && taskID > 0) {
     stdout.write("Enter Your New Title:");
     String? Title = stdin.readLineSync();
-    _tasks[taskID].title = Title;
+    tasks[taskID].title = Title!;
     print("Updated Successfuly");
     print("New Title:" '${tasks[taskID].title}');
     return;
@@ -119,25 +118,12 @@ void updateTitle(_tasks) {
 void updateDescription(_tasks) {
   stdout.write("What Task To Update?");
   int taskID = int.parse(stdin.readLineSync()!);
-  if (taskID <= _tasks.length && taskID > 0) {
-    stdout.write("Enter Your New Title:");
-    String? Title = stdin.readLineSync();
-    _tasks[taskID].title = Title;
+  if (taskID <= tasks.length && taskID > 0) {
+    stdout.write("Enter Your New  Description:");
+    String? Description = stdin.readLineSync();
+    tasks[taskID].description = Description!;
     print("Updated Successfuly");
-    print("New Title:" '${tasks[taskID].title}');
+    print("New Description:" '${tasks[taskID].description}');
     return;
-  }
-}
-
-//Delete Task
-void remove() {
-  try {
-    stdout.write("If you want to remove a task enter its number:");
-    int taskId = int.parse(stdin.readLineSync()!);
-    _tasks.removeWhere((tasks) => tasks.id == taskId);
-    print("Successfuly removed");
-  } catch (e) {
-    print("Invalid ID");
-    remove();
   }
 }
