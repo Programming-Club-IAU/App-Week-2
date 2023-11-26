@@ -23,14 +23,14 @@ By the end of this week, you should be able to:
 - [Dart Basics | Long Video](https://www.youtube.com/watch?v=Fqcsow_7go4)
 - [Dart Basics | Articles](https://www.geeksforgeeks.org/dart-tutorial/)
 
-## Project Details
+## Setup And Tutorial
 
-**1. Setup:**
+### 1. Setup
 
 - **Install Dart:**
   - Follow the official Flutter/Dart installation guide to download and install Dart on your local machine: <https://docs.flutter.dev/get-started/install>
 
-**2. Variables:**
+### 2. Variables
 
 - **Create a Dart Program:**
   - Create a new Dart file (e.g., `variables.dart`) using a text editor or code editor of your choice.
@@ -62,7 +62,7 @@ By the end of this week, you should be able to:
        dart variables.dart
        ```
 
-**3. Error Handling:**
+### 3. Error Handling
 
 - **Modify the Dart Program:**
   - Update `variables.dart` to include error handling using try-catch blocks. For example:
@@ -81,7 +81,7 @@ By the end of this week, you should be able to:
   - **Run the Modified Program:**
     - Run the modified Dart program as described in step 2.
 
-**4. Classes:**
+### 4. Classes
 
 - **Define the Task Class:**
   - Create a new Dart file (e.g., `task.dart`) to define the `Task` class:
@@ -113,7 +113,7 @@ By the end of this week, you should be able to:
        }
        ```
 
-**5. Constructors:**
+### 5. Constructors
 
 - **Add a Constructor to Task Class:**
   - In `task.dart`, add a constructor to the `Task` class to simplify task object creation:
@@ -182,13 +182,13 @@ By the end of this week, you should be able to:
        }
        ```
 
-**6. Understanding Null Safety:**
+### 6. Understanding Null Safety
 
 - **Enable Null Safety:**
   - Dart enables null safety by default. Ensure you're using Dart version 2.12 or higher.
   - Annotate variables and function parameters with `?` to indicate nullable types when needed. Dart's null safety will help catch null-related errors.
 
-**7. Understanding Dart IO:**
+### 7. Understanding Dart IO
 
 - **Read and write to console:**
   - Use the `stdin` and `stdout` objects to read and write to the console:
@@ -229,8 +229,16 @@ By the end of this week, you should be able to:
        }
        ```
 
-**8. Task List App:**
+## Task: Create a Task List App
 
-- **Build a Task List App:**
-  - Create a new Dart file (e.g., `task_list.dart`) to build the task list app.
-  - Implement a menu-driven interface that allows users to add, view, update, and delete tasks using the `Task` class.
+Your job is to create a simple task list app using Dart. The app should allow users to add, edit, and delete tasks. The app should also allow users to mark tasks as completed. The app should be able to handle errors and display error messages to the user.
+
+### Requirements
+
+- The app should be able to add, edit, and delete tasks.
+- The app should be able to mark tasks as completed.
+- The app should be able to handle errors and display error messages to the user.
+
+### Optional Requirements
+
+- The menu should be very user-friendly and easy to use.
